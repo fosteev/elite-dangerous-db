@@ -5,44 +5,38 @@
  * @format
  * @flow
  */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import TabRouter from './src/tabRouter';
+//import React, {Component} from 'react';
+//import {BackHandler} from 'react-native';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import AppReducer from './src/reducers';
+//import I18n from "react-native-i18n";
+//import App from './src/Navigators';
+
+export const store = createStore(AppReducer, applyMiddleware(thunk));
+
+console.disableYellowBox = true;
+
 
 export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
+    componentDidMount() {
+        // BackHandler.addEventListener('hardwareBackPress', function () {
+        //     // this.onMainScreen and this.goBack are just examples, you need to use your own implementation here
+        //     // Typically you would use the navigator here to go to the last state.
+        //
+        //     console.log('BACK HANDLEEERRRR');
+        // });
+    }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    render() {
+        return (
+            <Provider store={store}>
+                <TabRouter/>
+            </Provider>
+        );
+    }
+}
