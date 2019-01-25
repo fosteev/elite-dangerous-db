@@ -7,8 +7,6 @@
  */
 import React, {Component} from 'react';
 import TabRouter from './src/tabRouter';
-//import React, {Component} from 'react';
-//import {BackHandler} from 'react-native';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';

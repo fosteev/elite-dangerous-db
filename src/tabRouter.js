@@ -16,7 +16,7 @@ export default function TabRouter() {
         <Router>
             <Stack key="root">
                 <Scene key="tabbar" tabs={true} hideNavBar={true}>
-                    <Scene key="login" component={() => <AppLoups />} title="Login"/>
+                    <Scene key="login" component={() => <AppLoups />} title="Loups"/>
                     <Scene key="register" component={() => <Text>Reg</Text>} title="Register"/>
                     <Scene key="home" component={() => <Text>Home</Text>}/>
                 </Scene>

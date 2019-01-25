@@ -58,6 +58,7 @@ export default function loups(state = initialState, action) {
                         twoSupply: twoBuyPrice,
                         twoSellPrice: twoSellPrice,
                         twoDemand: item.twoSellListing.demand,
+                        distance: item.distance,
 
                         profit: (oneSellPrice - oneBuyPrice) + (twoSellPrice - twoBuyPrice),
                     }
